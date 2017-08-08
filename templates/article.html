@@ -1,0 +1,161 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/index.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/timeline.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/prism.css' %}" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">金融同业圈</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+              <li class="active"><a href="/">首页</a></li>
+              <li><a href="#about">工作</a></li>
+              <li><a href="#contact">生活</a></li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其他 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+          </li></ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'sign' %}">注册</a></li>
+            <li class="active"><a href="{% url 'login' %}">登录 <span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container barba-container" style="visibility: visible;">
+    <div class="row" style="margin-top: 70px">
+        <!--start main content aera-->
+        <div class="col-md-9  main-content">
+            <div class="post">
+               <!--start article header aera-->
+               <div class="header">
+                    <div class="title">
+                        <h2 class="text-center">{{ article.title }}</h2>
+                    </div>
+                    <div class="time">编辑于 {{ article.date_publish }}</div>
+                    <div style="clear:both;"></div>
+               </div>
+
+               <div class="footer">
+                   <a class="ret animation" href="/"><b>&lt;</b> 回到首页</a>
+               </div>
+               <!--start main article aera-->
+               <div class="article">
+                   <p class="para visible-xs" style="color: #666">* 移动设备下, 可左滑手指以查看较宽代码</p>
+                   <div class="txt">
+                       {{ article.content }}
+                   </div>
+               </div>
+               <!--start article footer aera-->
+               <div class="footer">
+                   <p class="copyinfo">*如非说明，文章均为原创，转载需注明出处.</p>
+                   <div style="clear: both;"></div>
+                   <a class="ret animation" href="/"><b>&lt;</b> 回到首页</a>
+               </div>
+            </div>
+        </div>
+        <div class="col-md-3 sidebar">
+    <div class="clearfix"></div>
+    <div class="sidebar-content">
+        <!-- start search area -->
+        <form class="form-horizontal" role="form" action="/blog/search" method="GET">
+            <input id="search" class="form-control" name="s" type="search" value="">
+            <button type="submit" class="animation red-btn">Search</button>
+        </form>
+
+        <!-- start bootstrap.cssinfo area -->
+        <div class="card">
+            <div class="header"></div>
+            <div class="avater">
+                <img alt="avater" src="http://blog-10033541.cossh.myqcloud.com/home/head.jpg">
+            </div>
+            <div class="content">
+                <h3>Tony</h3>
+                <ul class="status">
+                    <li><span class="normal">54</span><br>文章</li>
+                    <li><span class="normal">7</span><br>精选</li>
+                    <li><span class="normal">10</span><br>分类</li>
+                </ul>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+
+        <!-- start category area -->
+        <h5>分类</h5>
+        <ul class="nav nav-sidebar">
+                        <li class="">
+                <a href="/blog/posts/0" class="no-barba-prefetch">推荐阅读<sup>7</sup></a>
+            </li>
+                        <li class="">
+                <a href="/blog/posts/11" class="no-barba-prefetch">Go / Docker<sup>0</sup></a>
+            </li>
+                        <li class="">
+                <a href="/blog/posts/1" class="no-barba-prefetch">PHP / CI / Laravel<sup>14</sup></a>
+            </li>
+                        <li class="">
+                <a href="/blog/posts/4" class="no-barba-prefetch">PHP7 扩展开发<sup>8</sup></a>
+            </li>
+                        <li class="">
+                <a href="/blog/posts/8" class="no-barba-prefetch">C/C++ / 算法<sup>16</sup></a>
+            </li>
+                        <li class="">
+                <a href="/blog/posts/2" class="no-barba-prefetch">Linux<sup>9</sup></a>
+            </li>
+                        <li class="">
+                <a href="/blog/posts/3" class="no-barba-prefetch">MySQL<sup>4</sup></a>
+            </li>
+                        <li class="">
+                <a href="/blog/posts/5" class="no-barba-prefetch">HTML5<sup>1</sup></a>
+            </li>
+                        <li class="">
+                <a href="/blog/posts/9" class="no-barba-prefetch">随笔<sup>1</sup></a>
+            </li>
+                        <li class="">
+                <a href="/blog/posts/10" class="no-barba-prefetch">摄影<sup>0</sup></a>
+            </li>
+                        <li class="">
+                <a href="/blog/posts/1000" class="no-barba-prefetch">其他<sup>1</sup></a>
+            </li>
+                    </ul>
+
+    </div>
+</div>
+    </div>
+</div>
+    <div class="main-footer">
+            <h5 class="copyright text-center">
+               © 2017 &nbsp;|&nbsp;  湘ICP备16001500号 &nbsp;|&nbsp;
+                <a href="" class="no-barba no-barba-prefetch">统计</a> &nbsp;|&nbsp;
+                <a href="/admin" class="no-barba no-barba-prefetch">管理</a>
+            </h5>
+        </div>
+<script src="{% static 'bootstrap/js/build.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'bootstrap/js/jquery-latest.js' %}"></script>
+<link rel="stylesheet" href="{% static 'bootstrap/css/juhuoyuan.css' %}">
+<script type="text/javascript" src="{% static 'bootstrap/js/juhuoyuan.js' %}"></script>
+</body>
+</html>

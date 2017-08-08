@@ -1,0 +1,154 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>大资管 | 金融同业圈</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/index.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/timeline.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/prism.css' %}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static 'bootstrap/css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'bootstrap/css/navbar-fixed-top.css' %}" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="{% static 'bootstrap/js/ie8-responsive-file-warning.js' %}"></script><![endif]-->
+    <script src="{% static 'bootstrap/js/ie-emulation-modes-warning.js' %}"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+ <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">金融同业圈</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+              <li class="active"><a href="#">首页</a></li>
+              <li><a href="#about">工作</a></li>
+              <li><a href="#contact">生活</a></li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其他 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <div class="content-warp" id="barba-wrapper" aria-live="polite">
+        <div class="container barba-container">
+        <div class="row">
+                <div class="col-md-9  main-content">
+                    {% for article in article_list %}
+                        <div class="posts animation">
+                            <h4 class="posts-title">
+                                <a href="{% url 'article' %}/?id={{ article.id }}" class="animation">{{ article.title }}</a>
+                            </h4>
+                            <p class="time">作者 周文平 &nbsp; {{ article.date_publish }}</p>
+                            <p class="descript">
+                                {{ article.desc }}
+                            </p>
+                            <div class="posts-footer">
+                                分类:
+                                <a class="class animation" href="/">{{ article.category }}</a>&nbsp;
+                            </div>
+                        </div>
+{#                        <div class="page-nav animation clearfix">#}
+{#                        </div>#}
+                    {% endfor %}
+                </div>
+            <div class="col-md-3 sidebar">
+                <div class="clearfix"></div>
+                <div class="sidebar-content">
+        <!-- start search area -->
+        <form class="form-horizontal" role="form" action="/search" method="GET">
+            <input id="search" class="form-control" name="s" type="search" value="">
+            <button type="submit" class="animation red-btn">搜索</button>
+        </form>
+
+        <!-- start bootstrap.cssinfo area -->
+        <div class="card">
+            <div class="header"></div>
+            <div class="avater">
+                <img alt="avater" src="http://blog-10033541.cossh.myqcloud.com/home/head.jpg">
+            </div>
+            <div class="content">
+                <h3>周文平</h3>
+                <ul class="status">
+                    <li><span class="normal">{{ article_list.count }}</span><br>文章</li>
+                    <li><span class="normal">{{ category_list.count }}</span><br>精选</li>
+                    <li><span class="normal">{{ category_list.count }}</span><br>分类</li>
+                </ul>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+
+        <!-- start category area -->
+        <h5>分类</h5>
+        <ul class="nav nav-sidebar">
+            {% for article in article_list %}
+            <li class="active">
+                <a href="/0" class="no-barba-prefetch">{{ article.category }}<sup>{{ category_list.count }}</sup></a>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+            </div>
+        </div>
+        </div>
+    <div class="page-nav animation clearfix">
+    </div>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <div class="main-footer">
+            <h5 class="copyright text-center">
+               © 2017 &nbsp;|&nbsp;  湘ICP备16001500号 &nbsp;|&nbsp;
+                <a href="" class="no-barba no-barba-prefetch">统计</a> &nbsp;|&nbsp;
+                <a href="/admin" class="no-barba no-barba-prefetch">管理</a>
+            </h5>
+        </div>
+    <script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/ie10-viewport-bug-workaround.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/js/jquery-latest.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/juhuoyuan.css' %}">
+    <script type="text/javascript" src="{% static 'bootstrap/js/juhuoyuan.js' %}"></script>
+  </body>
+</html>
